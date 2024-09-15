@@ -1,28 +1,21 @@
-const express = require('express')
-const dotenv = require('dotenv').config()
-const cors = require('cors')
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser') 
-const cookieParser = require('cookie-parser')
+require("dotenv").config();
+const mongoose = require("mongoose");
+const { app } = require("./app");
+const { checkEnv } = require("./checkEnv");
 
-// db connection 
-mongoose.connect(process.env.MONGO_URL)
-.then(() => console.log('Database Connected'))
-.catch((err) => console.log('database not connected', err))
+const start = async () => {
+  const port = process.env.APP_PORT || 8000;
+  // check env variables
+  await checkEnv();
+  // db connection
+  try {
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log("Database Connected");
+  } catch (error) {
+    console.log("database not connected", err);
+  }
+  //   start app
+  app.listen(port, () => console.log(`Server is running on port ${port}`));
+};
 
-const app = express();
-
-// middleware 
-app.use(express.urlencoded({ extended: false }))
-app.use(express.json());
-app.use(cookieParser());
-app.use(express.urlencoded({extended: false}))
-
-app.use('/', require('./routes/authRoutes'));
-app.use('/register', require('./routes/authRoutes'));
-app.use('/signin', require('./routes/authRoutes'));
-app.use('/profile', require('./routes/profileRoutes'));
-
-
-const port = 8000;
-app.listen(port, () => console.log(`server is running on port ${port}`))
+start();
