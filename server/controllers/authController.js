@@ -6,6 +6,7 @@ const { Router } = require("express");
 const { body } = require("express-validator");
 const { validateRequest } = require("../middleware/validateRequest");
 const BadRequestError = require("../errors/BadRequestError");
+const { requireAuth } = require("../middleware/requireAuth");
 
 const router = Router();
 
@@ -84,22 +85,24 @@ router.post(
       throw new BadRequestError("Invalid Credentials");
     }
     // set token
-    const token = jwt.sign(
-      {
-        id: user.id,
-        email: user.email,
-        firstname: user.firstname,
-        phone: user.phone,
-      },
-      process.env.JWT_SECRET
-    );
+    const payload = {
+      id: user.id,
+      email: user.email,
+      firstname: user.firstname,
+      phone: user.phone,
+    };
+    const token = jwt.sign(payload, process.env.JWT_SECRET);
 
     res.status(200).json({ user, token, message: "Signin successful" });
   }
 );
 
-router.get("/signout", async (req, res) => {});
-router.get("/current-user", async (req, res) => {
-  res.status(200).json({ user: { firstName: "Some Name" } });
+router.get("/signout", requireAuth, async (req, res) => {
+  req.currentUser = null;
+  res.status(200).json({ message: "Signout successful" });
+});
+router.get("/current-user", requireAuth, async (req, res) => {
+  const user = await User.findById(req.currentUser.id);
+  res.status(200).json({ user });
 });
 module.exports = router;

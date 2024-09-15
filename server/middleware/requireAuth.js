@@ -1,22 +1,30 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/user");
+const NotAuthorizedError = require("../errors/NotAuthorizedError");
 
 const requireAuth = async (req, res, next) => {
-  const authorization = req.headers["authorization"];
+  const authorization = req.headers.authorization;
+  let token = "";
+  if (authorization && authorization.startsWith("Bearer")) {
+    token = authorization.split(" ")[1];
+  }
+
+  const accessToken = token;
+  // TODO:  implement session logic later
+  // const accessToken = req.session?.jwt || token;
 
   if (!authorization) {
-    return res.status(401).json({ error: "Auth token required" });
+    throw new NotAuthorizedError();
   }
-  const token = authorization.split(" ")[1];
   try {
-    const _id = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findOne(_id).select("_id");
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(payload);
+    req.currentUser = payload;
     console.log(req.user);
     next();
   } catch (error) {
-    console.log(error);
-    res.status(401).json({ error: "Request not authorized" });
+    console.log("Not authorized Error: ", error);
+    throw new NotAuthorizedError();
   }
 };
 
-module.exports = autheniticateToken;
+module.exports = { requireAuth };
