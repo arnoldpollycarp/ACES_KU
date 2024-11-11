@@ -2,6 +2,8 @@ import React from 'react'
 import image3  from '../assets/KU_LOGO_2.png'
 import image2  from '../assets/gavel.jpg'
 import image1  from '../assets/ACES_KU_BG.png'
+import Slider from 'react-slick'
+import constitution from '../assets/ACES_FINAL_CONSTITUTION_2_Nov_2022.pdf'
 
 export default function About() {
     // Title section image styling 
@@ -15,6 +17,49 @@ export default function About() {
         width: "100%"
     }
 
+
+      // leadership list 
+const leadershipData = [
+  {
+      id: 1,
+      role: "President",
+      name: "F.Name L.Name",
+      text: "I was impressed by the timely deliver or",
+      image: image3
+  },
+  {
+      id: 2,
+      role: "Organizing Secretary",
+      name: "F.Name L.Name",
+      text: "I was impressed by the timely deliver or",
+      image: image3
+  },
+  {
+      id: 3,
+      role: "Deputy Organizing Sec.",
+      name: "F.Name L.Name",
+      text: "I was impressed by the timely deliver or", 
+      image: image3
+  },
+  {
+      id: 4,
+      role:"Secretary General",
+      name: "F.Name L.Name",
+      text: "I was impressed by the timely deliver or", 
+      image: image3
+  }
+]
+
+// slider funtion 
+var settings = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 5000,
+  pauseOnHover: true
+};
 
   return (
     <div className=' p-20'>
@@ -61,7 +106,7 @@ export default function About() {
           <div className='flex flex-col'>
             <h1 className=''> <span className='text-yellow-500 font-bold'>OUR</span> <span className='font-bold'>MISSION</span></h1>
             <span className=''>
-            The mission of ACES-KU is to build and bridge gaps between Academia and Industry thereby fostering professional development of our members in various fundamental aspects such as education, engineering, leadership and business.
+            To collect, disseminate and share information relating to Civil Engineering, all the while ensuring efficient interactions among members and with professionals in the relevant field, in order to provide adequate opportunities for networking and capacity building.
             </span>
           </div>
           </BoxWrapper>
@@ -115,6 +160,7 @@ export default function About() {
                 fundamental principles as 
                 stipulated in our constitution."
                 </p>
+                <a href={constitution} className='bg-yellow-500 w-28 p-1 rounded-md font-semibold text-sm'>Read More &#8811;</a>
             </div>
 
              {/* image section  */}
@@ -124,6 +170,32 @@ export default function About() {
         </div>
       </div>
     </div>
+
+         {/* leadership board section  */}
+         <div className="container pt-10 pb-2 sm:pb-0 text-center">
+       <h1 className='font-bold text-2xl underline italic'><span>Leadership</span> <span className='text-yellow-500'>Board</span></h1>
+      <Slider {...settings}>
+        {
+          leadershipData.map((item) =>
+            <div className='my-2'>
+              <div key={item.id} className='flex flex-col gap-2 shadow-lg shadow-yellow-500 py-8 px-6 mx-4 rounded-md bg-white relative'>
+              <div className=''>
+                <img src={item.image} alt="" className='rounded-full w-20 h-20'/>
+              </div>
+              <div className='flex flex-col items-center'>
+                <p className='text-sm text-gray-600 font-mono'>{item.text}</p>
+                <h1 className='font-semibold text-black'>{item.name}</h1>
+                <span className='font-thin text-gray-900 '>{item.role}</span>
+              </div>
+              <p className='absolute top-0 right-0 text-5xl font-serif text-gray-500'>
+                 ”
+              </p>
+              </div>
+            </div>
+          )
+        }
+      </Slider>
+     </div>
       
     </div>
   )

@@ -5,7 +5,9 @@ import {
     FaInstagram,
     FaTwitter,
     FaPhone,
-    FaRegEnvelope
+    FaRegEnvelope,
+    FaTiktok,
+    FaLinkedin
   } from "react-icons/fa";
 
 export default function Contactus() {
@@ -21,9 +23,10 @@ export default function Contactus() {
 }
 
 const items = [
-    { name: "Facebook", icon: FaFacebook, link: "https://www.facebook.com/" },
-    { name: "Instagram", icon: FaInstagram, link: "https://www.instagram.com/" },
-    { name: "Twitter", icon: FaTwitter, link: "https://twitter.com/" }
+  { name: "Twitter", icon: FaTwitter, link: "https://twitter.com/aces_ku?t=MIZRH8Ulb2YcxwxbXbRd7Q&s=09" },
+  { name: "Instagram", icon: FaInstagram, link: "https://www.instagram.com/invites/contact/?i=fazvzru58r1y&utm_content=q0u7463" },
+  { name: "LinkedIn", icon: FaLinkedin, link: "https://www.linkedin.com/in/aces-ku-244b44256" },
+  { name: "TikTok", icon: FaTiktok, link: "https://www.tiktok.com/@aces_ku?_t=8XJYcEXL2ec&_r=1" }
   ];
   return (
     <div className='p-20'>

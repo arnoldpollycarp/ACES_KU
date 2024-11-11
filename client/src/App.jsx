@@ -15,8 +15,9 @@ import { UserContext, UserContextProvider } from './context/UserContext'
 import Profile from './pages/Profile'
 import ProfLibrary from './pages/ProfLibrary'
 import ProtectedRoute from './components/ProtectedRoute'
+import Events from './pages/Events'
 
-axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.baseURL = 'http://localhost:8000/api/v1/auth';
 axios.defaults.withCredentials = true
 
 export default function App() {
@@ -36,8 +37,9 @@ export default function App() {
           <Route path='/library' element={<Library />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/events' element={<Events />} />
           <Route element={<ProtectedRoute />}>
-            <Route path='/profile' element={<Profile />} />
             <Route path='/profLibrary' element={<ProfLibrary/>} />
           </Route>
         </Route>

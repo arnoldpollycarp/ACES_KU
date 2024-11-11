@@ -52,14 +52,7 @@ router.post(
       status: "success",
       user,
     });
-    // } catch (error) {
-    //   console.log("Register:  ", error);
-    //   return res.status(400).json({
-    //     message: "Failed to register user",
-    //     status: "failed",
-    //     user: null,
-    //   });
-    // }
+  
   }
 );
 
@@ -101,6 +94,7 @@ router.get("/signout", requireAuth, async (req, res) => {
   req.currentUser = null;
   res.status(200).json({ message: "Signout successful" });
 });
+
 router.get("/current-user", requireAuth, async (req, res) => {
   const user = await User.findById(req.currentUser.id);
   res.status(200).json({ user });

@@ -12,7 +12,7 @@ const start = async () => {
     await mongoose.connect(process.env.MONGO_URL);
     console.log("Database Connected");
   } catch (error) {
-    console.log("database not connected", err);
+    console.log("database not connected", error);
   }
   //   start app
   app.listen(port, () => console.log(`Server is running on port ${port}`));

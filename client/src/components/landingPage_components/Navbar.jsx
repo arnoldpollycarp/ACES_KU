@@ -21,12 +21,12 @@ export default function Navbar() {
       path: "/about"
     },
     {
-      name: "Leadership",
-      path: "/leadership"
+      name: "Action",
+      path: "/profile"
     },
     {
       name: "Events",
-      path: "/profile"
+      path: "/events"
     },
     {
       name: "Library",
@@ -118,7 +118,8 @@ export default function Navbar() {
     )}
     </Popover>
             ) : (
-              <Link to='/login'><button className='h-8 px-5 text-black transition-colors duration-150 border border-black rounded-lg focus:shadow-outline hover:bg-black hover:text-indigo-100'>Login</button></Link>
+              <a href='https://docs.google.com/forms/d/1WAgBdUDnlyjH-5dGFuPYpMDKG0D2U2oscax93-4US1Q/edit' className='border border-black p-1 h-8 rounded-md'>Register</a>
+              // <Link to='/login'><button className='h-8 px-5 text-black transition-colors duration-150 border border-black rounded-lg focus:shadow-outline hover:bg-black hover:text-indigo-100'>Login</button></Link>
             )
 
              } 

@@ -23,7 +23,7 @@ export default function Register() {
     // desconstruct data from backend 
     const {firstname, lastname, email, phone, password} = data
     try {
-     const {data} = await axios.post('/register', {firstname, lastname, email, phone, password})
+     const {data} = await axios.post('/api/v1/auth/register', {firstname, lastname, email, phone, password})
     //  check payload data 
     if(data.error){
       toast.error(data.error)

@@ -1,11 +1,38 @@
 import React from 'react'
 import image  from '../assets/KU_logo.png'
 import image2 from '../assets/hero_page.png'
-import image3 from '../assets/events_image.jpg'
-import image4 from '../assets/blog.jpg'
 import { FaChevronCircleRight } from "react-icons/fa";
+import image6  from '../assets/mentorship.png'
+import image7  from '../assets/site.png'
+import image8  from '../assets/even.png'
+import image9  from '../assets/network.png'
 
 export default function Home() {
+
+  const benefitsMenu = [
+    {
+        name: "Mentorship",
+        details: "Exclusive access to our mentorship program, where seasoned engineering professionals and alumni offer support,guidance, wisdom, and knowledge to help younavigate your career journey.",
+        image: image6
+    },
+    {
+        name: "Site Visits",
+        details: "Join us as we explore the vast engineering marvels and delve into the fascinating realms of technology,design, and ingenuity.",
+        image: image7
+    },
+    {
+        name: "Events",
+        details: "We host events and talks where top speakers who present both technical and informative programs on fundamental topics paramount to an aspiring engineer.",
+        image: image8
+    },
+    {
+        name: "Networking",
+        details: "We are here for you, Engineer. Whether you are looking to expand your network, opportunities abound, or simply connect with like-minded professionals,ACES-KU provides the ideal environment to grow and thrive in your career journey.",
+        image: image9
+    },
+]
+
+
   return (
     <div>
       {/* hero section */}
@@ -50,99 +77,86 @@ export default function Home() {
       </div>
 
       {/* M,A & V section */}
-      <div className='flex flex-col p-4'>
-      {/* // transactions stat cards */}
-        <div className='flex flex-col md:flex-row gap-4 w-full'>
-          <BoxWrapper>
-          <div className='flex flex-col'>
-            <h1 className=''><span className='font-bold'>ABOUT</span> <span className='text-yellow-500 font-bold'>US</span> </h1>
+      <div className='p-4'>
+        {/* about us section  */}
+        <div className='flex flex-1 gap-4 mb-2'>
+          {/* image div  */}
+          <img src={image7} alt="" className=' rounded-md' />
+          {/* text div  */}
+          <div>
+          <h1 className='text-2xl underline italic'><span className='font-bold'>ABOUT</span> <span className='text-yellow-500 font-bold'>US</span> </h1>
             <span className=''>
             Association of Civil Engineering Students - Kenyatta University (ACES-KU), was  founded in 2022 as an association for civil engineering students in Kenyatta University. 
             ACES-KU has its doors open to all aspiring civil engineering fraternity eager to learn, collaborate, and make a difference.
             </span>
           </div>
-          </BoxWrapper>
-          <BoxWrapper>
-          <div className='flex flex-col'>
-            <h1 className=''> <span className='text-yellow-500 font-bold'>OUR</span> <span className='font-bold'>MISSION</span></h1>
+        </div>
+        {/* Our mission section  */}
+        <div className='flex flex-1 gap-4 mb-2'>
+          {/* text div  */}
+          <div>
+          <h1 className='text-2xl underline italic'> <span className='text-yellow-500 font-bold'>OUR</span> <span className='font-bold'>MISSION</span></h1>
+            <span className=''>
+            To collect, disseminate and share information relating to Civil Engineering, all the while ensuring efficient interactions among members and with professionals in the relevant field, in order to provide adequate opportunities for networking and capacity building.
+            </span>
+          </div>
+          {/* image div  */}
+          <img src={image8} alt="" className=' rounded-md' />
+        </div>
+        {/* Our values section  */}
+        <div className='flex flex-1 gap-4'>
+          {/* image div  */}
+          <img src={image6} alt="" className=' rounded-md' />
+          {/* text div  */}
+          <div>
+          <h1 className='text-2xl underline italic'> <span className='text-yellow-500 font-bold'>OUR</span> <span className='font-bold'>VALUES</span></h1>
             <span className=''>
             The mission of ACES-KU is to build and bridge gaps between Academia and Industry thereby fostering professional development of our members in various fundamental aspects such as education, engineering, leadership and business.
             </span>
           </div>
-          </BoxWrapper>
-          <BoxWrapper>
-          <div className='flex flex-col'>
-            <h1 className=''> <span className='text-yellow-500 font-bold'>OUR</span> <span className='font-bold'>VALUES</span></h1>
-            <span className=''>
-            The mission of ACES-KU is to build and bridge gaps between Academia and Industry thereby fostering professional development of our members in various fundamental aspects such as education, engineering, leadership and business.
-            </span>
+        </div>
+      </div>
+
+      {/* benefits section  */}
+       <div className='p-5'>
+        <h1 className='text-center font-bold text-2xl underline italic pb-4'>Benefits For Joining <span className='text-yellow-500'>ACES-KU</span></h1>
+        <div className='grid grid-cols-4 gap-4'>
+              {
+                  benefitsMenu.map((item) => (
+                      <div class="max-w-sm rounded-lg overflow-hidden shadow-yellow-500 shadow-lg">
+                      <div class="font-bold text-center underline italic text-yellow-400 text-xl mb-2">{item.name}</div>
+                      <img class="w-full" src={item.image} alt="Sunset in the mountains" />
+                      <div class="px-6 py-4">
+                          <p class="text-gray-700 text-base">
+                              {item.details}
+                          </p>
+                      </div>
+                      </div>
+                  ))
+              }
           </div>
-          </BoxWrapper>
-        </div>
-      </div>
+       </div>
 
-      {/* events section */}
-       <div className='min-h-[550px] max-w-[1240px] mx-auto flex justify-center items-center py-12 sm:py-0'>
-      <div className='container'>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-center">
-            {/* image section  */}
-            <div data-aos="zoom-in">
-                <img src={image3} alt="" className='max-w-[400px] h-[350px] w-full mx-auto drop-shadow-[-10px_10px_12px_rgba(0,0,0,1)] object-cover rounded-2xl'/>
-            </div>
-
-            {/* text details  */}
-            <div className='flex flex-col justify-center gap-6 sm:pt-0'>
-                <h1 className='text-3xl sm:text-4xl font-bold'>
-                    <span className=' text-yellow-500'>ACES-KU</span> Upcoming Events 
-                </h1>
-                <p className=' text-sm text-gray-500 tracking-wide leading-5'>
-                    something about the sale offer
-                </p>
-                <div data-aos="fade-up" className=' flex items-center gap-2'>
-                    <p className=' text-gray-600'>we are a secure platform to deal with</p>
-                </div>
-                <div data-aos="fade-up" className=' flex items-center gap-2'>
-                    <p className=' text-gray-600'>we are a secure platform to deal with</p>
-                </div>
-                <div data-aos="fade-up" className=' flex items-center gap-2'>
-                    <p className=' text-gray-600'>we are a secure platform to deal with</p>
-                </div>
+       {/* Resources section  */}
+      <div className='p-4'>
+        <div className='flex flex-col gap-2 shadow-lg shadow-yellow-500 p-8 rounded-3xl w-full'>
+              <div className='flex flex-col'>
+              <h1 className='text-black text-center font-extrabold text-xl font-mono underline italic'>
+                  Resources
+              </h1>
+              <ul>
+                  <li> <span className='font-bold'>AutoCAD recordings</span> - Recordings of AutoCAD sessions from the diffferent
+                  mentoship groups.</li>
+                  <li><span className='font-bold'>Recorded Talks</span> - Audio and video recordings of hosted events and shows.</li>
+                  <li> <span className='font-bold'>Programming Links</span> - Links to the various programming languages and resources.</li>
+                  <li><span className='font-bold'>Lecture Notes & Exams</span> - Links to lecture notes and exam past papers for our esteemed 
+                  members.</li>
+                  <li><span className='font-bold'>Discord Membership</span> - Join ACES Discord channel. <a href="https://discord.gg/9dHT4Gwgu3" className='bg-yellow-500 p-2 text-sm rounded-md'>Join Discord</a></li>
+              </ul> 
+              
             </div>
         </div>
       </div>
-    </div>
-
-    {/* Blog section */}
-    <div className='min-h-[550px] max-w-[1240px] mx-auto flex justify-center items-center py-12 sm:py-0'>
-      <div className='container'>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-center">
-            {/* text details  */}
-            <div className='flex flex-col justify-center gap-6 sm:pt-0'>
-                <h1 className='text-3 sm:text-3 font-bold'>
-                  Tell Us Your story
-                </h1>
-                <p className=' text-sm text-gray-500 tracking-wide leading-5'>
-                Below are all the links to our Blogs/Articles, 
-                Magazines and Newsletters
-                </p>
-                <div data-aos="fade-up" className=' flex items-center gap-2'>
-                    <p className=' text-gray-600'>Blog on Engineering <FaChevronCircleRight /></p>
-                </div>
-                <div data-aos="fade-up" className=' flex items-center gap-2'>
-                    <p className=' text-gray-600'>Blog on Engineering <FaChevronCircleRight /></p>
-                </div>
-                <div data-aos="fade-up" className='gap-2'>
-                    <p className=' text-gray-600'>Blog on Engineering <FaChevronCircleRight /></p>
-                </div>
-            </div>
-
-            {/* image section  */}
-            <div data-aos="zoom-in">
-                <img src={image4} alt="" className='max-w-[400px] h-[350px] w-full mx-auto drop-shadow-[-10px_10px_12px_rgba(0,0,0,1)] object-cover rounded-2xl'/>
-            </div>
-        </div>
-      </div>
-    </div>
 
     </div>
   )
