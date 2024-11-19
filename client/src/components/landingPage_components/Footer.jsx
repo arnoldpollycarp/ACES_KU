@@ -41,7 +41,7 @@ export default function Footer() {
       const year = today.getFullYear();
   return (
     <div>
-      <div className="w-full mt-10 bg-yellow-400 text-black py-0">
+      <div className="w-full mt-10 bg-gradient-to-b from-yellow-400 to-green-300 text-black py-0">
       <div className="max-w-[1240px] mx-auto grid grid-cols-2 md:grid-cols-6 border-b-2 border-black py-8">
         {sections.map((section, index) => (
           <div key={index}>
@@ -74,7 +74,7 @@ export default function Footer() {
         <p className="py-4"><span> © {year}</span> ACES-KU. All rights reserved</p>
         <div className="flex gap-3 sm:w-[300px] pt-4 text-2xl">
           {items.map((x, index) => {
-            return <a href={x.link}><x.icon key={index} className="hover:text-white" /></a>;
+            return <a href={x.link} key={index}><x.icon key={index} className="hover:text-white" /></a>;
           })}
         </div>
       </div>

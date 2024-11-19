@@ -6,8 +6,48 @@ import image6  from '../assets/mentorship.png'
 import image7  from '../assets/site.png'
 import image8  from '../assets/even.png'
 import image9  from '../assets/network.png'
+import Hero1  from '../assets/eng_img.png'
+import Hero2  from '../assets/site-removebg-preview.png'
+import Slider from 'react-slick'
 
 export default function Home() {
+  var settings_1 = {
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 10000,
+    cssEase: "linear",
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    responsive: [
+      {
+        breakpoint: 10000,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  }; 
 
   const benefitsMenu = [
     {
@@ -32,19 +72,36 @@ export default function Home() {
     },
 ]
 
+// hero sectio details 
+const imgList = [
+  {
+    id: 1,
+    image: Hero1,
+    title: "Welcome to ACES-KU",
+    description: "We are not just a group of engineers; we are a community; an association driven by curiosity, creativity and collaboration.Join us on this exciting journey that goes beyond the classroom: Where knowledge meets hands-on experience",
+  },
+  {
+    id: 3,
+    image: Hero2,
+    title: "BRIDGING ACADEMIA AND INDUSTRY",
+    description: "We are not just a group of engineers; we are a community; an association driven by curiosity, creativity and collaboration.Join us on this exciting journey that goes beyond the classroom: Where knowledge meets hands-on experience",
+  }
+
+]
+
 
   return (
     <div>
       {/* hero section */}
-      <div className="overflow-hidden min-h-[550px] sm:min-h-[650px] flex justify-center items-center text-black bg-no-repeat bg-center bg-contain" style={{backgroundImage: `url(${image2})`}}>
+      <div className="overflow-hidden min-h-[550px] sm:min-h-[650px] flex justify-center items-center text-black bg-no-repeat bg-center bg-contain">
         {/* background shapes */}
-        <div className="h-[500px] w-[500px] rounded-full absolute -top-1/4 -z-10 right-0 bg-yellow-300"></div>
+        <div className="h-[500px] w-[500px] rounded-full absolute -top-1/4 -z-10 right-0 bg-gradient-to-r from-yellow-300 to-green-300"></div>
         <div className="h-[300px] w-[300px] rounded-full absolute -right-1/4 -z-10 left-0 bg-yellow-200"></div>
-        <div className="h-[100px] w-[100px] rounded-full absolute top-1/4 -z-10 right-0 bg-yellow-200"></div>
+        <div className="h-[100px] w-[100px] rounded-full absolute top-1/4 -z-10 right-0 bg-green-200"></div>
 
         {/* hero container */}
         <div className="container pb-2 sm:pb-0">
-         <div className="flex flex-col items-center">
+         {/* <div className="flex flex-col items-center">
           <div className='flex flex-col gap-2 shadow-lg shadow-yellow-500 p-8 rounded-3xl w-3/4 relative'>
             <div className=''>
                <img src={image} alt="" className='rounded-full w-20 h-20'/>
@@ -72,7 +129,32 @@ export default function Home() {
                 </p>
             </div>
           </div>
-         </div>
+         </div> */}
+         <Slider {...settings_1}>
+         { imgList.map((item) =>(
+          <div className="">
+            <div className="grid grid-cols-1 sm:grid-cols-2">
+              <div className='flex flex-col justify-center gap-4 pt-32 sm:pt-0 text-center order-2 sm:order-1 relative'>
+                <h1 data-aos="zoom-out" data-aos-duration="500" data-aos-once="true" className="text-5xl sm:text-5xl sm:mt-12 font-extrabold py-3 font-mono">
+                  {item.title}
+                </h1>
+                <p data-aos="zoom-out" data-aos-duration="500" data-aos-delay="300" className="font-mono">{item.description}</p>
+                <div>
+                  <button className="bg-gradient-to-r from-yellow-600 to-green-300 hover:scale-105 duration-200 rounded-full text-white py-2 px-4">Order Now</button>
+                </div>
+              </div>
+              {/* image section */}
+              <div className='order-1 order-2'>
+                <div>
+                  <img src={item.image} alt="" className="w-[200px] h-[300px] sm:w-[450px] sm:h-[450px] object-contain
+                  sm:scale-125 mx-auto" />
+                </div>
+              </div>
+            </div>
+          </div>
+          )
+          ) }
+        </Slider> 
         </div>
       </div>
 

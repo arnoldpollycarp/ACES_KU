@@ -21,8 +21,8 @@ export default function Navbar() {
       path: "/about"
     },
     {
-      name: "Action",
-      path: "/profile"
+      name: "Partners",
+      path: "/leadership"
     },
     {
       name: "Events",
@@ -69,8 +69,8 @@ export default function Navbar() {
           {/*for large devices*/}
           <div className='lg:flex itme-center gap-3 hidden text-stone-600'>
             {
-              menuList.map((item) => (
-                <Link to={item.path} className={`block hover:text-gray-400 py-2 px-4 ${pathname === item.path ? "text-black font-bold" : ""}`}>{item.name}</Link>
+              menuList.map((item, l) => (
+                <Link to={item.path} className={`block hover:text-gray-400 py-2 px-4 ${pathname === item.path ? "text-black font-bold" : ""}`} key={l}>{item.name}</Link>
               ))
             }
 
